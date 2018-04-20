@@ -7,6 +7,7 @@ import (
 	"engo.io/ecs"
 	"engo.io/engo"
 	"engo.io/engo/common"
+	// EDIT THE FOLLOWING IMPORT TO YOUR systems package
 	"github.com/EngoEngine/TrafficManager/systems"
 )
 
@@ -34,7 +35,8 @@ func (*defaultScene) Preload() {
 }
 
 // Setup is called before the main loop starts. It allows you to add entities and systems to your Scene.
-func (*defaultScene) Setup(world *ecs.World) {
+func (*defaultScene) Setup(u engo.Updater) {
+	world, _ := u.(*ecs.World)
 	common.SetBackground(color.White)
 
 	world.AddSystem(&common.RenderSystem{})
